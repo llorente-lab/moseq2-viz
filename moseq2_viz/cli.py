@@ -48,7 +48,7 @@ def cli():
     help="metadata field to search for value to match",
 )
 @click.option(
-    "--value", "-v", type=str, default="Mouse", help="Value to match for", multiple=True
+    "--value", "-v", type=str, default=["Mouse"], help="Value to match for", multiple=True
 )
 @click.option("--group", "-g", type=str, default="Group1", help="Group name to set")
 @click.option("--exact", "-e", type=bool, is_flag=True, help="Exact match only")
