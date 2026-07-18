@@ -1206,7 +1206,7 @@ def sort_syllables_by_stat_difference(complete_df, ctrl_group, exp_group, max_sy
         complete_df = complete_df[complete_df.syllable < max_sylls]
 
     # Prepare DataFrame
-    mutation_df = complete_df.groupby(['group', 'syllable']).mean()
+    mutation_df = complete_df.groupby(['group', 'syllable']).mean(numeric_only=True)
 
     # Get groups to measure mutation by
     control_df = mutation_df.loc[ctrl_group]
@@ -1234,7 +1234,7 @@ def sort_syllables_by_stat(complete_df, stat='usage', max_sylls=None):
     if max_sylls is not None:
         complete_df = complete_df[complete_df.syllable < max_sylls]
 
-    tmp = complete_df.groupby('syllable').mean().sort_values(by=stat, ascending=False).index
+    tmp = complete_df.groupby('syllable').mean(numeric_only=True).sort_values(by=stat, ascending=False).index
 
     # Get sorted ordering
     ordering = list(tmp)

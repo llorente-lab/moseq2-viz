@@ -48,7 +48,7 @@ def run_2d_embedding(
         print('Unsupported input. Only input embedding="lda" or "pca".')
         return None, None
 
-    syllable_df = mean_df.groupby(["syllable", "uuid", "group"], as_index=False).mean()
+    syllable_df = mean_df.groupby(["syllable", "uuid", "group"], as_index=False).mean(numeric_only=True)
 
     unique_groups = sorted(syllable_df.group.unique())
 
@@ -109,7 +109,7 @@ def run_2d_scalar_embedding(
         return None, None
 
     # Get group mean scalar values
-    scalar_mean_df = scalar_df.groupby(["uuid", "group"], as_index=False).mean()
+    scalar_mean_df = scalar_df.groupby(["uuid", "group"], as_index=False).mean(numeric_only=True)
 
     # Get unique list of groups
     unique_groups = sorted(scalar_mean_df.group.unique())
