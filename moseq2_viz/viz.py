@@ -658,7 +658,7 @@ def plot_cp_comparison(model_results, pc_cps, plot_all=False, best_model=None, b
             kappa = v['model_parameters']['kappa']
             model_cps = v['changepoints']
             # append model stats
-            model_stats.append([k, kappa, np.nanmean(model_cps), np.nanmedian(model_cps), mode(model_cps)[0][0]]+ changepoint_stats)
+            model_stats.append([k, kappa, np.nanmean(model_cps), np.nanmedian(model_cps), mode(model_cps, axis=None, keepdims=False)[0]]+ changepoint_stats)
             # clipping the changepoints at 10 seconds
             ax = sns.kdeplot(model_cps[model_cps<10], ax=ax, linestyle=ls, alpha=alpha, bw_adjust=bw_adjust,
                         color=palette[i], label=f'Model Changepoints Kappa={kappa:1.02E}')
