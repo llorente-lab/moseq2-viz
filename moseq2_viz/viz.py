@@ -633,15 +633,15 @@ def plot_cp_comparison(model_results, pc_cps, plot_all=False, best_model=None, b
 
     # Plot best model description
     s = f'Best Model CP Stats: Mean, median, mode (s) = {np.nanmean(model_cps):.4f},' \
-        f' {np.nanmedian(model_cps):.4f}, {mode(model_cps, keepdims=False)[0]:.4f}'
+        f' {np.nanmedian(model_cps):.4f}, {mode(model_cps, axis=None, keepdims=False)[0]:.4f}'
     # Plot PC CP description
     t = f'PC CP Stats: Mean, median, mode (s) = {np.nanmean(pc_cps):.4f}, ' \
-        f'{np.nanmedian(pc_cps):.4f}, {mode(pc_cps, keepdims=False)[0]:.4f}'
+        f'{np.nanmedian(pc_cps):.4f}, {mode(pc_cps, axis=None, keepdims=False)[0]:.4f}'
 
     # saving model kappa scan stats
     model_stats = None
     # record changepoint stats
-    changepoint_stats = [np.nanmean(pc_cps), np.nanmedian(pc_cps), mode(pc_cps, keepdims=False)[0]]
+    changepoint_stats = [np.nanmean(pc_cps), np.nanmedian(pc_cps), mode(pc_cps, axis=None, keepdims=False)[0]]
 
     if not plot_all and best_model is not None:
         # clipping the changepoints at 10 seconds
